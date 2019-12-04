@@ -20,11 +20,22 @@
     },
     "autoload": {
         "psr-4": {
-            "ZoomInfo\\": "src"
+            "Lester\\ProactiveAlert\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Lester\\ProactiveAlert\\Tests\\": "tests"
+        },
+        "files": [
+            "vendor/phpunit/phpunit/src/Framework/Assert/Functions.php"
+        ]
+    },
     "scripts": {
-        "test": "./vendor/bin/phpunit --bootstrap ./vendor/autoload.php"
+        "test": "./vendor/bin/phpunit --bootstrap ./vendor/autoload.php",
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump"
+        ]
     },
     "extra": {
         "laravel": {

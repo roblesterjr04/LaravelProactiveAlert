@@ -1,13 +1,22 @@
 <?php
 
+namespace Lester\ProactiveAlert\Tests;
+
 use Orchestra\Testbench\TestCase;
+use Lester\ProactiveAlert\Facades\Proactive;
+use Lester\ProactiveAlert\ServiceProvider;
 
 class ProactiveTest extends TestCase
 {
-    public function testAuthentication()
+    protected function getPackageProviders($app)
+    {
+        return [ServiceProvider::class];
+    }
+
+    public function testFacade()
     {
 
-        
+        Proactive::test();
 
     }
 }
