@@ -15,4 +15,4 @@ return [
 
         // Add more key sets here to use different instances of the alert API.
     ]
-]
+];
