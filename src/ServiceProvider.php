@@ -18,6 +18,11 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 	public function register()
 	{
 
+		$this->mergeConfigFrom(
+			self::CONFIG_PATH,
+			'eloquent_sf'
+		);
+
         $this->app->bind('proactive', function() {
 			return new ProactiveAlertBuilder();
 		});

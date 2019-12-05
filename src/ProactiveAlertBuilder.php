@@ -60,7 +60,7 @@ class ProactiveAlertBuilder
         return $this;
     }
 
-    public function template($templste)
+    public function template($template)
     {
         $this->template = $template;
         return $this;
