@@ -5,7 +5,7 @@ return [
 
     'keysets' => [
         'default_keyset' => [
-            'site_id' => env('PROACTVE_SITE_ID'),
+            'site_id' => env('PROACTIVE_SITE_ID'),
             'consumer_key' => env('PROACTIVE_CONSUMER_KEY'),
             'consumer_secret' => env('PROACTIVE_CONSUMER_SECRET'),
             'token' => env('PROACTIVE_TOKEN'),
