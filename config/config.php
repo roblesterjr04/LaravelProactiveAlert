@@ -10,7 +10,7 @@ return [
             'consumer_secret' => env('PROACTIVE_CONSUMER_SECRET'),
             'token' => env('PROACTIVE_TOKEN'),
             'token_secret' => env('PROACTIVE_TOKEN_SECRET'),
-            'domain' => 'https://va.ivrdeflect.liveperson.net',
+            'domain' => env('PROACTIVE_DOMAIN'),
         ],
 
         // Add more key sets here to use different instances of the alert API.

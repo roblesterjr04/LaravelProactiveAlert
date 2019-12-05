@@ -12,15 +12,57 @@ class ProactiveAlertBuilder
 
     private $keyset;
     private $body = '';
+    private $channel = 'sms';
+    private $template = 'Proactive_Outbound';
+    private $number;
+    private $code = 1;
+    private $skill;
+    private $language = 'en_US';
 
     public function __construct()
     {
         $this->keyset = config('proactive.default');
     }
 
+    public function language($lang)
+    {
+        $this->language = $lang;
+        return $this;
+    }
+
+    public function skill($skill)
+    {
+        $this->skill = $skill;
+        return $this;
+    }
+
     public function body($body)
     {
         $this->body = $body;
+        return $this;
+    }
+
+    public function to($number)
+    {
+        $this->number = $number;
+        return $this;
+    }
+
+    public function code($code)
+    {
+        $this->code = $code;
+        return $this;
+    }
+
+    public function channel($channel)
+    {
+        $this->channel = $channel;
+        return $this;
+    }
+
+    public function template($templste)
+    {
+        $this->template = $template;
         return $this;
     }
 
@@ -64,6 +106,7 @@ class ProactiveAlertBuilder
         ]), [
 			'signature_method'=> Oauth1::SIGNATURE_METHOD_HMAC,
 		]));
+
         $stack->push($auth);
 		$client = new HttpRequest([
 			'handler' => $stack,
@@ -85,27 +128,25 @@ class ProactiveAlertBuilder
         $config = $this->config();
 
         $body = [
-            'skill' => '',
+            'skill' => $this->skill,
             'siteId' => $config['site_id'],
-            'customerCountryCode' => '1',
-            'customerPhoneNumber' => '7179659230',
-            'externalCustomerId' => '',
-            'externalCustomerIdDescriptor' => '',
-            'externalAlertId' => '',
-            'alertInfo' => new \StdClass(),
-            'firstName' => '',
-            'lastName' => '',
-            'proactiveChannel' => '',
-            'proactiveLanguage' => '',
-            'proactiveTemplate' => 'Proactive_Outbound',
+            'customerCountryCode' => $this->code,
+            'customerPhoneNumber' => $this->number,
+            'externalCustomerIdDescriptor' => 'VIP',
+            'alertInfo' => [],
+            'proactiveChannel' => $this->channel,
+            'proactiveLanguage' => $this->language,
+            'proactiveTemplate' => $this->template,
             'proactiveVariables' => [
                 'sms_text' => $this->body
             ],
         ];
+
         $response = json_decode($this->client()->post($url, [
             'json' => $body,
         ])->getBody());
 
+        return $response;
     }
 
 }
