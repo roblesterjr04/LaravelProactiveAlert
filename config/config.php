@@ -4,12 +4,15 @@ return [
     'default' => 'default_keyset', // the key of a configured keyset below.
 
     'keysets' => [
-        'default_keyset' => [ //This key
+        'default_keyset' => [
             'site_id' => env('PROACTVE_SITE_ID'),
-            'app_key' => env('PROACTIVE_APP_KEY'),
-            'app_secret' => env('PROACTIVE_APP_SECRET'),
+            'consumer_key' => env('PROACTIVE_CONSUMER_KEY'),
+            'consumer_secret' => env('PROACTIVE_CONSUMER_SECRET'),
             'token' => env('PROACTIVE_TOKEN'),
-            'token_secret' => env('PROACTIVE_TOKEN_SECRET')
-        ]
+            'token_secret' => env('PROACTIVE_TOKEN_SECRET'),
+            'domain' => 'https://va.ivrdeflect.liveperson.net',
+        ],
+
+        // Add more key sets here to use different instances of the alert API.
     ]
 ]
