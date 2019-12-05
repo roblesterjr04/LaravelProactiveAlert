@@ -20,7 +20,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
 		$this->mergeConfigFrom(
 			self::CONFIG_PATH,
-			'eloquent_sf'
+			'proactive'
 		);
 
         $this->app->bind('proactive', function() {
