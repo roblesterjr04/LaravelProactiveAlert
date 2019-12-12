@@ -12,16 +12,19 @@ class ProactiveAlertBuilder
 
     private $keyset;
     private $body = '';
-    private $channel = 'sms';
-    private $template = 'Proactive_Outbound';
+    private $channel;
+    private $template;
     private $number;
     private $code = 1;
     private $skill;
-    private $language = 'en_US';
+    private $language;
 
     public function __construct()
     {
         $this->keyset = config('proactive.default');
+        $this->language = config('proactive.keysets.' . $this->keyset . '.language', 'en_US');
+        $this->template = config('proactive.keysets.' . $this->keyset . '.template', 'Proactive_Outbound');
+        $this->channel = config('proactive.keysets.' . $this->keyset . '.channel', 'sms');
     }
 
     public function language($lang)

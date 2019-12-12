@@ -11,6 +11,10 @@ return [
             'token' => env('PROACTIVE_TOKEN'),
             'token_secret' => env('PROACTIVE_TOKEN_SECRET'),
             'domain' => env('PROACTIVE_DOMAIN'),
+
+            'channel' => env('PROACTIVE_CHANNEL'),
+            'template' => env('PROACTIVE_TEMPLATE'),
+            'language' => env('PROACTIVE_LANGUAGE'),
         ],
 
         // Add more key sets here to use different instances of the alert API.
