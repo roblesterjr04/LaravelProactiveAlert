@@ -32,7 +32,7 @@ class ProactiveTest extends TestCase
     public function testNotification()
     {
 
-        Notification::send((object) [
+        $notification = Notification::send((object) [
             'mobileNumber' => getenv('TEST_NUMBER')
         ], new ProactiveNotification('Test notification message.'));
 
